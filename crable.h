@@ -1,11 +1,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-typedef enum crable_error {
-    crable_ok = 0,
-    crable_full = 1,
-} crable_error;
-
 typedef struct crable_entry {
     uint_fast64_t full_hash;
     size_t value;
@@ -13,9 +8,16 @@ typedef struct crable_entry {
 
 typedef struct crable {
     size_t capacity;
+    size_t unoccupied;
     crable_entry entries[];
 } crable;
 
-crable *crable_malloc(size_t capacity);
-crable_error crable_put(crable *tbl, size_t full_hash, size_t value);
+size_t crable_capacity(size_t memsize);
+
+size_t crable_memsize(size_t capacity);
+
+crable *crable_make(void *memory, size_t memsize);
+
+size_t crable_put(crable *tbl, size_t full_hash, size_t value);
+
 size_t crable_get(crable *tbl, size_t full_hash);
