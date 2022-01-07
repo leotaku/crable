@@ -25,6 +25,18 @@ crable_dep = declare_dependency(
   link_with : [ crable_lib ],
 )
 
+foreach t : [
+  'reliable_until_full',
+  'reports_fullness_correctly',
+  'overfull_is_full',
+]
+  test_exe = executable(
+    t + '_test', 'tests/' + t + '.c',
+    dependencies : [ crable_dep ],
+  )
+  test(t, test_exe)
+endforeach
+
 pkg = import('pkgconfig')
 pkg.generate(
   name : 'crable',
