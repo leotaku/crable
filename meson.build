@@ -14,7 +14,7 @@ project(
   ],
 )
 
-crable_lib = library(
+crable_lib = both_libraries(
   'crable', 'crable.c',
   install : true,
 )
