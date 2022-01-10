@@ -1,16 +1,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-typedef struct crable_entry {
-    uint_fast64_t full_hash;
-    size_t value;
-} crable_entry;
-
-typedef struct crable {
-    size_t capacity;
-    size_t unoccupied;
-    crable_entry entries[];
-} crable;
+typedef struct crable crable;
 
 size_t crable_capacity(size_t memsize);
 
