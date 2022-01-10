@@ -1,6 +1,6 @@
 #include "alloca.h"
 #include "assert.h"
-#include "crable.c"
+#include "crable.h"
 #include "stdlib.h"
 
 void naive_ReliableUntilFull() {
