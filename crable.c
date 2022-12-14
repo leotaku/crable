@@ -67,7 +67,7 @@ size_t crable_put(crable *tbl, uint_fast64_t full_hash, size_t value) {
     return 1;
 }
 
-size_t crable_get(crable *tbl, size_t full_hash) {
+size_t crable_get(crable *tbl, uint_fast64_t full_hash) {
     size_t distance = 0;
     for (;;) {
         size_t realpos = (full_hash + distance) % tbl->capacity;
